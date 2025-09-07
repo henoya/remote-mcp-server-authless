@@ -19,13 +19,16 @@ export class MyMCP extends McpAgent {
 		this.server.tool(
 			"calculate",
 			{
-				operation: z.enum(["add", "subtract", "multiply", "divide"]),
+				operation: z.enum(["add", "subtract", "multiply", "divide", "zero"]),
 				a: z.number(),
 				b: z.number(),
 			},
 			async ({ operation, a, b }) => {
 				let result: number;
 				switch (operation) {
+					case "zero":
+						result = 0;
+						break;
 					case "add":
 						result = a + b;
 						break;
